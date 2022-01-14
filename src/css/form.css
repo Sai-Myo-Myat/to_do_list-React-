@@ -1,0 +1,36 @@
+form {
+    width: 50%;
+}
+
+.formAndSelect {
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputContainer {
+    width: 100%;
+}
+
+.common {
+    border: none;
+    font-size: 19px;
+    padding: 7px;
+}
+
+.inputContainer input {
+    width: 70%;
+    outline: none;
+}
+
+.inputContainer button {
+    width: 10%;
+    background-color: #B85C38;
+    cursor: pointer;
+}
+
+.header {
+    color: #E0C097;
+}
+
