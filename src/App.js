@@ -12,11 +12,15 @@ function App() {
   const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
+    getTodosFormLocalstorage();
+  },[])
+
+  useEffect(() => {
     filterHandler();
-  },[status,todos])
+    addToLocalStorage();
+  },[status,todos]);
 
   const filterHandler = () => {
-    console.log(status)
       switch (status) {
         case "complete":
           setFilteredTodos(todos.filter(todo => todo.complete === true))
@@ -28,6 +32,15 @@ function App() {
           setFilteredTodos(todos);
           break;
       }
+  }
+  const addToLocalStorage = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  const getTodosFormLocalstorage = () => {
+    const todosStringFormLocalstorage = localStorage.getItem('todos');
+    const todosFormLocalstorage = JSON.parse(todosStringFormLocalstorage);
+    setTodos(todosFormLocalstorage);
   }
 
   return (

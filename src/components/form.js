@@ -9,9 +9,13 @@ function Form({setText, text, setTodos, todos, setStatus}) {
 
   const addToList = (e) => {
     e.preventDefault()
-    setTodos(
-      [...todos, {text: text, complete: false, id: Math.random() *100}]
-    )
+    if(text !== ""){
+      setTodos(
+        [...todos, {text: text, complete: false, id: Math.random() *100}]
+      )
+    }else{
+      alert('what you wanna do?')
+    }
   }
 
   const updateStatus = (e) => {

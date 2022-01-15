@@ -12,7 +12,6 @@ function List({text, todo, todos, setTodos}) {
   const completeHandler = () => {
     setTodos(todos.map(item => {
       if(item.id === todo.id) {
-        console.log(todo)
         return { ...item, complete: !item.complete}
       }
       return item;
