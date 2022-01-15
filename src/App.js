@@ -11,6 +11,29 @@ function App() {
   const [status, setStatus] = useState('');
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  const filterHandler = () => {
+    switch (status) {
+      case "complete":
+        setFilteredTodos(todos.filter(todo => todo.complete === true))
+        break;
+      case "uncomplete":
+        setFilteredTodos(todos.filter((todo) => todo.complete === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+}
+const addToLocalStorage = () => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+const getTodosFormLocalstorage = () => {
+  const todosStringFormLocalstorage = localStorage.getItem('todos');
+  const todosFormLocalstorage = JSON.parse(todosStringFormLocalstorage);
+  setTodos(todosFormLocalstorage);
+}
+
   useEffect(() => {
     getTodosFormLocalstorage()
   },[])
@@ -19,29 +42,6 @@ function App() {
     filterHandler()
     addToLocalStorage()
   },[status, todos]);
-
-  const filterHandler = () => {
-      switch (status) {
-        case "complete":
-          setFilteredTodos(todos.filter(todo => todo.complete === true))
-          break;
-        case "uncomplete":
-          setFilteredTodos(todos.filter((todo) => todo.complete === false));
-          break;
-        default:
-          setFilteredTodos(todos);
-          break;
-      }
-  }
-  const addToLocalStorage = () => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }
-
-  const getTodosFormLocalstorage = () => {
-    const todosStringFormLocalstorage = localStorage.getItem('todos');
-    const todosFormLocalstorage = JSON.parse(todosStringFormLocalstorage);
-    setTodos(todosFormLocalstorage);
-  }
 
   return (
     <div className="App">
