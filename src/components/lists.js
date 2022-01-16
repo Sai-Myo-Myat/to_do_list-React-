@@ -7,7 +7,7 @@ function Lists({todos, setTodos, filteredTodos}) {
   return (
         <div className="listContainer">
             <ul>
-              {filteredTodos.map(todo =>(
+              {filteredTodos && filteredTodos.map(todo =>(
                 <List text={todo.text} setTodos={setTodos} todos={todos} todo={todo} key={todo.id}/>
               ))}
             </ul>

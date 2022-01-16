@@ -10,6 +10,9 @@ function Form({setText, text, setTodos, todos, setStatus}) {
   const addToList = (e) => {
     e.preventDefault()
     if(text !== ""){
+      if(!todos){
+        todos=[];
+      }
       setTodos(
         [...todos, {text: text, complete: false, id: Math.random() *100}]
       )
